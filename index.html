@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ora Studio — Yoga &amp; Mat Pilates in Mandaue</title>
+  <meta name="description" content="Yoga and mat pilates in Mandaue City. Drop-in classes, private sessions, and studio rental. We move, we flow, we align." />
+  <link rel="icon" href="images/logo.jpg" type="image/jpeg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@700&display=swap" rel="stylesheet">
+  <style>
+    /* Licensed brand faces — used if installed locally or dropped into /fonts */
+    @font-face {
+      font-family: 'Fogthree MediumACL';
+      src:
+        local('Fogthree MediumACL'),
+        local('FogthreeACL'),
+        local('Fogthree Medium ACL'),
+        local('Fogthree-MediumACL');
+      font-weight: 500;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Innova Alt';
+      src:
+        local('Innova Alt Bold'),
+        local('InnovaAlt-Bold'),
+        local('Innova Alt');
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    /* ============================================
+       THEME — Ora Studio · earthy brown
+       ============================================ */
+    :root {
+      --color-bg: #f7f2eb;
+      --color-surface: #fffaf5;
+      --color-ink: #2c241c;
+      --color-muted: #7a6e63;
+      --color-primary: #7a5230;
+      --color-primary-dark: #5c3d24;
+      --color-accent: #e8dfd4;
+      --color-footer: #2c241c;
+      --font-heading: 'Instrument Serif', 'Palatino', Georgia, serif;
+      --font-body: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-ora: 'Fogthree MediumACL', 'FogthreeACL', 'Cormorant Garamond', Palatino, serif;
+      --font-studio: 'Innova Alt', 'Innova Alt Bold', 'Plus Jakarta Sans', var(--font-body);
+      --radius: 4px;
+      --max-width: 1100px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 5.25rem; }
+
+    @media (prefers-reduced-motion: no-preference) {
+      body { animation: pageFadeIn 0.5s ease; }
+    }
+    @keyframes pageFadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes fadeRise {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: none; }
+    }
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.55s ease, transform 0.55s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+    }
+
+    html, body { overflow-x: clip; }
+    body { font-family: var(--font-body); color: var(--color-ink); background: var(--color-bg); line-height: 1.7; -webkit-tap-highlight-color: transparent; }
+    img { max-width: 100%; display: block; }
+    h1, h2, h3 { font-family: var(--font-heading); font-weight: 400; line-height: 1.25; letter-spacing: 0.01em; }
+    .container { max-width: var(--max-width); margin: 0 auto; padding: 0 1.25rem; }
+    section { padding: 5rem 0; }
+    .section-label {
+      text-transform: uppercase; letter-spacing: 0.25em; font-size: 0.72rem;
+      color: var(--color-primary); font-weight: 600; margin-bottom: 0.75rem;
+    }
+    .section-title { font-size: clamp(1.7rem, 1.3rem + 2vw, 2.3rem); margin-bottom: 1rem; }
+    .center { text-align: center; }
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid var(--color-primary); outline-offset: 3px;
+    }
+
+    header {
+      position: fixed; inset: 0 0 auto 0; z-index: 100;
+      background: transparent; border-bottom: 1px solid transparent;
+      color: #fffaf5; padding-top: env(safe-area-inset-top, 0px);
+      transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+    }
+    header.is-solid {
+      background: rgba(247,242,235,0.96); backdrop-filter: blur(12px);
+      border-bottom-color: var(--color-accent); color: var(--color-ink);
+      box-shadow: 0 8px 24px rgba(44,36,28,0.07);
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; padding: 0.65rem 1.25rem; max-width: var(--max-width); margin: 0 auto; }
+    .logo { display: flex; align-items: center; text-decoration: none; color: inherit; flex-shrink: 0; }
+    .brand-mark {
+      display: inline-flex; flex-direction: column; align-items: center;
+      width: max-content; line-height: 1;
+      color: inherit; text-decoration: none;
+    }
+    .brand-ora {
+      display: block; text-align: center;
+      font-family: var(--font-ora); font-weight: 500; font-size: 1.7rem;
+      letter-spacing: 0; font-variant-ligatures: common-ligatures discretionary-ligatures;
+      font-feature-settings: "liga" 1, "dlig" 1, "kern" 1;
+    }
+    .brand-studio {
+      display: flex; justify-content: space-between; align-items: baseline; width: 100%;
+      box-sizing: border-box;
+      font-family: var(--font-studio); font-weight: 700; font-size: 0.55rem;
+      margin-top: 0.28em; text-transform: uppercase;
+    }
+    .brand-studio > span { display: block; flex: 0 0 auto; line-height: 1; }
+    .nav-links { display: flex; gap: 1.75rem; list-style: none; align-items: center; }
+    .nav-links a { text-decoration: none; color: inherit; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.1em; }
+    header.is-solid .nav-links a:hover { color: var(--color-primary); }
+    header:not(.is-solid) .nav-links a:hover { opacity: 0.78; }
+    .nav-cta { border: 1px solid currentColor; padding: 0.45rem 1.15rem; border-radius: var(--radius); }
+    header.is-solid .nav-cta { border-color: var(--color-primary); color: var(--color-primary) !important; }
+    header.is-solid .nav-cta:hover { background: var(--color-primary); color: #fff !important; }
+    header:not(.is-solid) .nav-cta:hover { background: rgba(255,250,245,0.12); opacity: 1; }
+    .menu-toggle {
+      display: none; background: none; border: none; cursor: pointer;
+      padding: 0.45rem; color: inherit; min-width: 44px; min-height: 44px;
+    }
+    .menu-toggle svg { width: 26px; height: 26px; stroke: currentColor; }
+    .nav-backdrop {
+      position: fixed; inset: 0; z-index: 99;
+      background: rgba(44, 36, 28, 0.28);
+      -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+      opacity: 0; visibility: hidden; pointer-events: none;
+      transition: opacity 0.28s ease, visibility 0.28s;
+    }
+    body.menu-open { overflow: hidden; }
+    body.menu-open .nav-backdrop {
+      opacity: 1; visibility: visible; pointer-events: auto;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .nav-backdrop { transition: none; -webkit-backdrop-filter: none; backdrop-filter: none; }
+    }
+
+    .hero {
+      position: relative; padding: 0; min-height: 100svh;
+      display: flex; align-items: center; justify-content: center; text-align: center;
+      color: #fffaf5; overflow: hidden;
+    }
+    .hero-media {
+      position: absolute; inset: 0; background:
+        linear-gradient(180deg, rgba(44,36,28,0.58) 0%, rgba(44,36,28,0.42) 28%, rgba(44,36,28,0.7) 100%),
+        url("images/hero.jpg") center / cover no-repeat,
+        var(--color-primary-dark);
+    }
+    .hero .container { position: relative; z-index: 1; padding: 7.5rem 1.25rem 5.5rem; }
+    .hero h1.brand-mark {
+      margin: 0 auto 1.15rem; color: #fffaf5;
+      text-shadow: 0 12px 40px rgba(0,0,0,0.35);
+    }
+    .hero .brand-ora { font-size: clamp(3.4rem, 2rem + 6vw, 5.6rem); letter-spacing: 0; }
+    .hero .brand-studio {
+      font-size: clamp(0.85rem, 0.55rem + 1.1vw, 1.2rem);
+      margin-top: 0.45rem; color: #f0e4d8;
+    }
+    .hero .tagline {
+      font-family: var(--font-heading); font-style: italic; font-size: clamp(1.15rem, 1rem + 0.8vw, 1.45rem);
+      margin-bottom: 1.1rem; color: #f0e4d8;
+    }
+    .hero p { font-size: 1.05rem; color: rgba(255,250,245,0.82); margin-bottom: 2rem; max-width: 30rem; margin-left: auto; margin-right: auto; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.55rem;
+      background: var(--color-primary); color: #fff; text-decoration: none;
+      padding: 0.9rem 2.4rem; border-radius: var(--radius); font-size: 0.88rem;
+      text-transform: uppercase; letter-spacing: 0.12em; font-weight: 600; transition: background 0.2s, transform 0.15s;
+    }
+    .btn svg { width: 1.05rem; height: 1.05rem; flex-shrink: 0; }
+    .btn:hover { background: var(--color-primary-dark); transform: translateY(-2px); }
+    @media (prefers-reduced-motion: reduce) {
+      header { transition: none; }
+      .btn:hover { transform: none; }
+      .nav-links, .nav-links li { transition: none; }
+      .class-panel.is-active,
+      .day-panel.is-active,
+      .day-panel.is-active .class-row,
+      .service-group.is-shown { animation: none; }
+      .class-chip.is-hidden { transform: none; }
+    }
+    .btn-ghost {
+      background: transparent; color: #fffaf5; border: 1px solid rgba(255,250,245,0.55); margin-left: 0.75rem;
+    }
+    .btn-ghost:hover { background: rgba(255,250,245,0.1); }
+    .btn-group { display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; }
+    .btn-group .btn-ghost { margin-left: 0; }
+
+    .intro { padding: 4.5rem 0; }
+    .intro-grid {
+      display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 3.5rem; align-items: center;
+    }
+    .intro-copy p { color: var(--color-muted); }
+    .intro-copy p + p { margin-top: 1rem; }
+    .practice-accent {
+      color: var(--color-primary); font-style: italic;
+    }
+    .intro-photo {
+      border-radius: var(--radius); overflow: hidden; aspect-ratio: 4 / 5;
+      background: var(--color-accent); width: 100%;
+    }
+    .intro-photo img { width: 100%; height: 100%; object-fit: cover; }
+
+    .section-sub {
+      text-align: center; color: var(--color-muted); max-width: 34rem;
+      margin: -0.35rem auto 1.5rem; font-size: 0.98rem;
+    }
+    .services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; margin-top: 1.5rem; }
+    .service-group {
+      background: var(--color-surface); border: 1px solid var(--color-accent);
+      border-radius: var(--radius); padding: 1.6rem 1.5rem 1.35rem;
+    }
+    .service-group.is-hidden { display: none; }
+    .service-group.is-shown { animation: fadeRise 0.34s ease; }
+    .service-group h3 {
+      font-size: 1.35rem; margin-bottom: 1.1rem; padding-bottom: 0.6rem;
+      border-bottom: 1px solid var(--color-accent);
+    }
+    .price-row { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding: 0.55rem 0; }
+    .price-row .name { font-weight: 600; font-size: 0.97rem; }
+    .price-row .desc { font-size: 0.85rem; color: var(--color-muted); }
+    .price-row .dots { flex: 1; border-bottom: 1px dotted var(--color-muted); opacity: 0.4; transform: translateY(-4px); }
+    .price-row .price { font-family: var(--font-heading); font-size: 1.15rem; color: var(--color-primary); white-space: nowrap; }
+
+    .gallery { background: var(--color-surface); }
+    .gallery-grid {
+      display: grid; grid-template-columns: 1.05fr 0.95fr; grid-template-rows: 14rem 14rem;
+      gap: 0.75rem; margin-top: 0.25rem;
+    }
+    .gallery-item {
+      background: var(--color-accent); border-radius: var(--radius);
+      overflow: hidden; min-height: 0;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .gallery-item:nth-child(2) { grid-row: 1 / 3; }
+    .gallery-item:hover { transform: translateY(-4px); box-shadow: 0 10px 24px rgba(44,36,28,0.15); }
+    .gallery-item img { width: 100%; height: 100%; object-fit: cover; }
+
+    .schedule { background: var(--color-bg); }
+    .schedule-note { text-align: center; color: var(--color-muted); max-width: 36rem; margin: 0 auto 1.75rem; font-size: 0.95rem; }
+    .schedule-board {
+      background: var(--color-surface); border: 1px solid var(--color-accent);
+      border-radius: var(--radius); padding: 1.25rem 1.25rem 1.5rem; max-width: 52rem; margin: 0 auto;
+      overflow: hidden;
+    }
+    .day-tabs {
+      display: flex; gap: 0.4rem; overflow-x: auto; padding-bottom: 0.35rem;
+      scrollbar-width: thin; -webkit-overflow-scrolling: touch;
+    }
+    .day-tab {
+      flex: 1 0 auto; min-width: 4.4rem; border: 1px solid transparent; background: transparent;
+      font-family: inherit; cursor: pointer; border-radius: var(--radius); padding: 0.65rem 0.5rem 0.55rem;
+      color: var(--color-muted); transition: background 0.15s, color 0.15s, border-color 0.15s;
+    }
+    .day-tab .dow { display: block; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 600; }
+    .day-tab .hours-mini { display: block; font-size: 0.68rem; margin-top: 0.15rem; opacity: 0.85; }
+    .day-tab:hover { color: var(--color-ink); background: var(--color-bg); }
+    .day-tab.is-active {
+      background: var(--color-primary); color: #fffaf5; border-color: var(--color-primary);
+    }
+    .day-tab.is-today:not(.is-active) { border-color: var(--color-accent); color: var(--color-ink); }
+    .filter-row {
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-start;
+      gap: 0.55rem 0.85rem; margin: 0.85rem 0 0.35rem;
+    }
+    .panel-heading {
+      font-family: var(--font-body); font-size: 0.78rem; font-weight: 700; line-height: 1.2;
+      letter-spacing: 0.16em; text-transform: uppercase; color: var(--color-primary);
+    }
+    .panel-hours {
+      font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600;
+      color: var(--color-primary); background: var(--color-bg); border: 1px solid var(--color-accent);
+      padding: 0.28rem 0.6rem; border-radius: 999px; white-space: nowrap;
+    }
+    .day-panel { display: none; }
+    .day-panel.is-active { display: block; animation: fadeRise 0.34s ease; }
+    .day-panel.is-active .class-row:not(.is-hidden) { animation: fadeRise 0.32s ease both; }
+    .day-panel.is-active .class-row:nth-child(1) { animation-delay: 0.02s; }
+    .day-panel.is-active .class-row:nth-child(2) { animation-delay: 0.05s; }
+    .day-panel.is-active .class-row:nth-child(3) { animation-delay: 0.08s; }
+    .day-panel.is-active .class-row:nth-child(4) { animation-delay: 0.11s; }
+    .day-panel.is-active .class-row:nth-child(5) { animation-delay: 0.14s; }
+    .day-panel.is-active .class-row:nth-child(6) { animation-delay: 0.17s; }
+    .day-panel.is-active .class-row:nth-child(7) { animation-delay: 0.2s; }
+    .day-panel.is-active .class-row:nth-child(8) { animation-delay: 0.23s; }
+    .class-row {
+      display: grid; grid-template-columns: 5.6rem 1fr auto; gap: 0.85rem; align-items: baseline;
+      padding: 0.7rem 0; border-bottom: 1px solid rgba(122,82,48,0.1); font-size: 0.95rem;
+    }
+    .class-row[data-class] { cursor: pointer; }
+    .class-row[data-class]:hover .class-name { color: var(--color-primary); }
+    .class-row:last-child { border-bottom: 0; }
+    .class-row.is-hidden { display: none; }
+    .class-time { font-weight: 600; color: var(--color-ink); white-space: nowrap; font-variant-numeric: tabular-nums; }
+    .class-name { color: var(--color-ink); }
+    .class-kind {
+      font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600;
+      color: var(--color-primary); background: var(--color-bg); border: 1px solid var(--color-accent);
+      padding: 0.2rem 0.5rem; border-radius: 999px; white-space: nowrap;
+    }
+    .empty-day { display: none; color: var(--color-muted); padding: 1.5rem 0 0.5rem; text-align: center; font-size: 0.95rem; }
+    .empty-day.is-visible { display: block; }
+
+    .class-picks {
+      display: flex; flex-wrap: wrap; justify-content: center; align-items: baseline; gap: 0.15rem 1.25rem;
+      margin-bottom: 1.1rem;
+    }
+    .rate-picks { margin-top: 0.35rem; }
+    .class-pick {
+      font-family: var(--font-heading); font-size: 1.15rem; font-weight: 400; letter-spacing: 0.01em;
+      background: none; border: 0; border-radius: 0; cursor: pointer; color: var(--color-muted);
+      padding: 0.45rem 0 0.4rem; min-height: 44px;
+      box-shadow: inset 0 -1px 0 transparent;
+      transition: color 0.22s ease, box-shadow 0.22s ease;
+    }
+    .class-pick.is-active {
+      color: var(--color-ink);
+      box-shadow: inset 0 -2px 0 var(--color-primary);
+    }
+    .schedule-board .class-chips {
+      display: grid; grid-template-columns: 1fr 1fr; position: relative;
+      margin: -1.25rem -1.25rem 0.35rem;
+      border-bottom: 1px solid var(--color-accent);
+      background-image: linear-gradient(var(--color-accent), var(--color-accent));
+      background-size: 1px 60%; background-repeat: no-repeat; background-position: center;
+    }
+    .class-chips.is-solo { display: none; }
+    .class-chip {
+      font-family: var(--font-heading); font-size: 1.08rem; font-weight: 400; letter-spacing: 0.01em;
+      background: none; border: 0; border-radius: 0; cursor: pointer; color: var(--color-muted);
+      padding: 0.95rem 1rem 0.85rem; min-height: 48px;
+      box-shadow: inset 0 -2px 0 transparent;
+      transition: color 0.22s ease, box-shadow 0.22s ease, opacity 0.28s ease, transform 0.28s ease;
+    }
+    .class-chips.is-pair:not(.has-pick) .class-chip:not(.is-hidden) {
+      color: var(--color-ink);
+      box-shadow: inset 0 -2px 0 var(--color-primary);
+    }
+    .class-chips.is-pair.has-pick .class-chip:not(.is-active) { color: var(--color-muted); }
+    .class-chip:hover { color: var(--color-ink); }
+    .class-chip.is-active { color: var(--color-ink); box-shadow: inset 0 -2px 0 var(--color-primary); }
+    .class-chip.is-hidden {
+      position: absolute; opacity: 0; visibility: hidden; pointer-events: none;
+      transform: translateY(6px);
+    }
+    .class-body { padding-bottom: 1.1rem; margin-bottom: 1.1rem; border-bottom: 1px solid var(--color-accent); }
+    .class-body.is-idle { display: none; }
+    .class-panel { display: none; }
+    .class-panel.is-active { display: block; animation: fadeRise 0.38s ease; }
+    .class-panel .level-pill {
+      display: inline-block; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em;
+      font-weight: 600; color: var(--color-primary); margin-bottom: 0.35rem;
+    }
+    .class-panel h3 { font-size: 1.45rem; margin-bottom: 0.5rem; }
+    .class-chips:not(.is-solo) ~ .class-body .class-panel h3 { display: none; }
+    .class-panel p { color: var(--color-muted); font-size: 0.92rem; }
+
+    .booking { background: var(--color-accent); text-align: center; }
+    .booking > .container > p { max-width: 34rem; margin: 0 auto 1.25rem; color: var(--color-muted); }
+    .booking-email { margin: 1.15rem auto 0; font-size: 0.8rem; letter-spacing: 0.04em; color: #a8988c; }
+    .booking-email a { color: inherit; text-decoration: underline; text-underline-offset: 0.18em; }
+    .booking-email a:hover { color: var(--color-ink); }
+    .booking-grid {
+      display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 2.25rem 2.75rem; align-items: start;
+      margin: 2.75rem auto 0; max-width: 54rem; text-align: left;
+      padding: 2rem 1.65rem 1.85rem;
+      background:
+        radial-gradient(ellipse 80% 60% at 12% 0%, rgba(122,82,48,0.08), transparent 55%),
+        linear-gradient(160deg, rgba(255,250,245,0.78), rgba(247,242,235,0.35));
+      border: 1px solid rgba(122,82,48,0.14);
+      border-radius: calc(var(--radius) + 2px);
+    }
+    .booking-kicker {
+      text-transform: uppercase; letter-spacing: 0.18em; font-size: 0.68rem;
+      color: var(--color-primary); font-weight: 600; margin-bottom: 0.55rem;
+    }
+    .visit-address {
+      font-family: var(--font-heading); font-style: italic; font-size: clamp(1.2rem, 1rem + 0.7vw, 1.45rem);
+      line-height: 1.35; color: var(--color-ink); max-width: 22rem;
+    }
+    .visit-map {
+      position: relative; aspect-ratio: 16 / 10; margin: 1.15rem 0 0;
+      overflow: hidden; border-radius: var(--radius); background: var(--color-surface);
+      box-shadow: 0 18px 40px -28px rgba(44, 36, 28, 0.55);
+    }
+    .visit-map iframe {
+      position: absolute; inset: -28% 0 -38%; width: 100%; height: 166%;
+      border: 0; pointer-events: none; filter: saturate(0.82) contrast(1.02);
+    }
+    .visit-map::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(180deg, transparent 42%, rgba(44, 36, 28, 0.55) 100%);
+      pointer-events: none;
+    }
+    .visit-map-hit { position: absolute; inset: 0; z-index: 1; }
+    .visit-map-cta {
+      position: absolute; left: 0.9rem; bottom: 0.8rem; z-index: 2; pointer-events: none;
+      font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.14em; font-weight: 600;
+      color: #fffaf5;
+    }
+    .hours-head {
+      display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 0.55rem;
+      margin-bottom: 0.55rem;
+    }
+    .hours-head .booking-kicker { margin-bottom: 0; }
+    .hours-head-dot { color: rgba(122, 82, 48, 0.45); font-weight: 600; line-height: 1; }
+    .hours-today-label {
+      font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600;
+      color: var(--color-primary); background: rgba(122, 82, 48, 0.1);
+      border: 1px solid rgba(122, 82, 48, 0.22);
+      padding: 0.28rem 0.6rem; border-radius: 999px; white-space: nowrap;
+    }
+    .hours-today-when {
+      display: block; margin: 0 0 1.15rem; padding-bottom: 1.05rem;
+      border-bottom: 1px solid rgba(122,82,48,0.16);
+      font-family: var(--font-heading); font-size: clamp(1.35rem, 1.1rem + 0.8vw, 1.7rem);
+      line-height: 1.2; color: var(--color-ink);
+    }
+    .hours-list { list-style: none; margin-top: 0.15rem; }
+    .hours-list li {
+      display: grid; grid-template-columns: 3.1rem 1fr; gap: 0.85rem; align-items: baseline;
+      padding: 0.42rem 0.55rem; margin: 0 -0.55rem; border-radius: var(--radius);
+      font-size: 0.9rem; transition: background 0.2s ease;
+    }
+    .hours-list .dow { font-weight: 600; color: var(--color-ink); }
+    .hours-list .when { color: var(--color-muted); }
+    .hours-list li.is-today {
+      background: rgba(122, 82, 48, 0.09);
+    }
+    .hours-list li.is-today .dow,
+    .hours-list li.is-today .when { color: var(--color-primary); font-weight: 600; }
+
+    footer { background: var(--color-footer); color: #b5a9ac; padding: 3rem 0 2rem; text-align: center; }
+    footer .brand-mark { color: #fffaf5; display: inline-flex; }
+    footer .brand-ora { font-size: 2.1rem; }
+    footer .brand-studio { color: #d4c4b4; }
+    footer .socials { display: flex; justify-content: center; gap: 1.25rem; margin: 1.25rem 0; }
+    footer .socials a { color: #b5a9ac; }
+    footer .socials a:hover { color: #fff; }
+    footer .socials svg { width: 20px; height: 20px; }
+    .footer-bottom { margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid #453b3e; font-size: 0.82rem; }
+
+    @media (max-width: 860px) {
+      section { padding: 3.75rem 0; }
+      .intro { padding: 3.5rem 0; }
+      .nav { padding: 0.55rem 1rem; }
+      header .brand-ora { font-size: 1.45rem; }
+      .class-panel.is-active { display: block; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 12rem 15rem; }
+      .gallery-item:nth-child(2) { grid-row: auto; grid-column: 1 / -1; }
+      .intro-grid {
+        display: flex; flex-direction: column; gap: 1.75rem;
+      }
+      .intro-photo {
+        width: 100vw; max-width: none;
+        margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw);
+        aspect-ratio: 16 / 10; border-radius: 0;
+      }
+      .services-grid { grid-template-columns: 1fr; }
+      .class-row { grid-template-columns: 5.2rem 1fr; }
+      .class-kind { grid-column: 2; justify-self: start; }
+      .booking-grid { grid-template-columns: 1fr; gap: 2.25rem; padding: 1.5rem 1.15rem 1.4rem; }
+      .schedule-board { padding: 1rem; }
+      .schedule-board .class-chips { margin: -1rem -1rem 1rem; }
+      .day-tab { min-width: 3.9rem; padding: 0.7rem 0.4rem; }
+      .menu-toggle { display: block; }
+      .nav-links {
+        display: flex; position: absolute; top: 100%; left: 0; right: 0;
+        flex-direction: column; align-items: stretch;
+        background: var(--color-bg); color: var(--color-ink);
+        padding: 0 1.25rem; gap: 0.15rem;
+        border-bottom: 1px solid var(--color-accent);
+        max-height: 0; opacity: 0; transform: translateY(-8px);
+        overflow: hidden; pointer-events: none; visibility: hidden;
+        transition: max-height 0.38s ease, opacity 0.28s ease, transform 0.32s ease, visibility 0.32s, padding 0.32s ease;
+      }
+      .nav-links.open {
+        max-height: 22rem; opacity: 1; transform: none;
+        padding: 1.15rem 1.25rem 1.4rem;
+        pointer-events: auto; visibility: visible;
+      }
+      .nav-links a {
+        color: var(--color-ink); display: block; padding: 0.75rem 0.2rem;
+      }
+      .nav-links a.is-here { color: var(--color-primary); }
+      .nav-links a.is-here::after {
+        content: 'You are here';
+        display: block; margin-top: 0.2rem;
+        font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase;
+        font-weight: 600; color: var(--color-primary); opacity: 0.9;
+      }
+      .nav-links .nav-cta.is-here {
+        border-color: var(--color-primary); color: var(--color-primary) !important;
+      }
+      .nav-links li {
+        opacity: 0; transform: translateY(-6px);
+        transition: opacity 0.22s ease, transform 0.22s ease;
+      }
+      .nav-links.open li { opacity: 1; transform: none; }
+      .nav-links.open li:nth-child(1) { transition-delay: 0.04s; }
+      .nav-links.open li:nth-child(2) { transition-delay: 0.08s; }
+      .nav-links.open li:nth-child(3) { transition-delay: 0.12s; }
+      .nav-links.open li:nth-child(4) { transition-delay: 0.16s; }
+      .nav-links.open li:nth-child(5) { transition-delay: 0.2s; }
+      .nav-links.open li:nth-child(6) { transition-delay: 0.24s; }
+      .nav-links .nav-cta {
+        display: inline-block; width: fit-content; margin-top: 0.35rem;
+        border-color: var(--color-primary); color: var(--color-primary) !important;
+      }
+      .nav-links .nav-cta:hover { background: var(--color-primary); color: #fff !important; }
+    }
+    @media (max-width: 540px) {
+      .hero .container { padding: 6.5rem 1.1rem 4.25rem; }
+      .hero p { font-size: 0.98rem; }
+      .btn { width: 100%; text-align: center; padding: 0.95rem 1.5rem; }
+      .btn-group { flex-direction: column; align-items: stretch; width: min(20rem, 100%); margin: 0 auto; }
+      .gallery-grid { grid-template-columns: 1fr; grid-template-rows: none; }
+      .gallery-item { min-height: 15rem; }
+      .gallery-item:nth-child(2) { grid-column: auto; }
+      .filter-row { align-items: center; }
+      .type-filters { flex-wrap: wrap; }
+      .price-row .name { font-size: 0.92rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav class="nav">
+      <a href="#" class="logo" aria-label="Ora Studio">
+        <span class="brand-mark">
+          <span class="brand-ora">ORA</span>
+          <span class="brand-studio" aria-hidden="true"><span>S</span><span>T</span><span>U</span><span>D</span><span>I</span><span>O</span></span>
+        </span>
+      </a>
+      <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false" onclick="toggleMenu()">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+      <ul class="nav-links">
+        <li><a href="#about">Studio</a></li>
+        <li><a href="#classes">Classes</a></li>
+        <li><a href="#services">Rates</a></li>
+        <li><a href="#schedule">Schedule</a></li>
+        <li><a href="#gallery">Space</a></li>
+        <li><a href="#book" class="nav-cta">Book</a></li>
+      </ul>
+    </nav>
+  </header>
+  <div class="nav-backdrop" id="nav-backdrop" aria-hidden="true"></div>
+
+  <section class="hero">
+    <div class="hero-media" aria-hidden="true"></div>
+    <div class="container">
+      <p class="section-label" style="color: #e8dfd4;">Yoga &amp; Mat Pilates · Mandaue</p>
+      <h1 class="brand-mark brand-mark--hero" aria-label="Ora Studio">
+        <span class="brand-ora" aria-hidden="true">ORA</span>
+        <span class="brand-studio" aria-hidden="true"><span>S</span><span>T</span><span>U</span><span>D</span><span>I</span><span>O</span></span>
+      </h1>
+      <p class="tagline">We move, we flow, we align</p>
+      <p>Drop-in classes, private sessions, and a calm space to rent — right on A.S. Fortuna in Mandaue City.</p>
+      <div class="btn-group">
+        <a href="https://www.instagram.com/orastudio.cebu" class="btn" target="_blank" rel="noopener">Book on Instagram</a>
+        <a href="#classes" class="btn btn-ghost">View schedule</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="intro">
+    <div class="container intro-grid">
+      <div class="intro-copy">
+        <p class="section-label">The practice</p>
+        <h2 class="section-title">A quiet room on Cebu for <span class="practice-accent">yoga</span> and <span class="practice-accent">mat pilates</span></h2>
+        <p>Come for a drop-in, book a private, or rent the studio by the hour. Classes run every day of the week — mornings through evening — so you can find a slot that actually fits.</p>
+        <p>DM us on Instagram to hold your place. Lineups can shift week to week; we’ll confirm what’s on when you message.</p>
+      </div>
+      <div class="intro-photo">
+        <img src="images/gallery-1.jpg" alt="Mat pilates stations set for class at Ora Studio">
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="container">
+      <div class="center">
+        <p class="section-label">Rates</p>
+        <h2 class="section-title">Classes &amp; private sessions</h2>
+      </div>
+      <p class="section-sub">Drop-in classes, private sessions, and studio rental — pick what fits your practice.</p>
+      <div class="class-picks rate-picks" role="tablist" aria-label="Filter rates">
+        <button type="button" class="class-pick is-active" data-rate="all">All</button>
+        <button type="button" class="class-pick" data-rate="drop-in">Drop-in</button>
+        <button type="button" class="class-pick" data-rate="private">Private</button>
+      </div>
+      <div class="services-grid">
+        <div class="service-group" data-rate="drop-in">
+          <h3>Mat Pilates — Drop-in</h3>
+          <div class="price-row"><div><div class="name">Solo</div><div class="desc">Per session</div></div><div class="dots"></div><div class="price">₱650</div></div>
+          <div class="price-row"><div><div class="name">Duo</div><div class="desc">Per person / session</div></div><div class="dots"></div><div class="price">₱600</div></div>
+          <div class="price-row"><div><div class="name">Trio</div><div class="desc">Per person / session</div></div><div class="dots"></div><div class="price">₱550</div></div>
+        </div>
+        <div class="service-group" data-rate="drop-in">
+          <h3>Yoga — Drop-in</h3>
+          <div class="price-row"><div><div class="name">Solo</div><div class="desc">Per session</div></div><div class="dots"></div><div class="price">₱550</div></div>
+          <div class="price-row"><div><div class="name">Duo</div><div class="desc">Per person / session</div></div><div class="dots"></div><div class="price">₱500</div></div>
+          <div class="price-row"><div><div class="name">Trio</div><div class="desc">Per person / session</div></div><div class="dots"></div><div class="price">₱475</div></div>
+        </div>
+        <div class="service-group" data-rate="private">
+          <h3>Mat Pilates — Private</h3>
+          <div class="price-row"><div><div class="name">Solo</div><div class="desc">Per session</div></div><div class="dots"></div><div class="price">₱950</div></div>
+          <div class="price-row"><div><div class="name">Group</div><div class="desc">Min. 2 · per person</div></div><div class="dots"></div><div class="price">₱850</div></div>
+        </div>
+        <div class="service-group" data-rate="private">
+          <h3>Yoga — Private</h3>
+          <div class="price-row"><div><div class="name">Solo</div><div class="desc">Per session</div></div><div class="dots"></div><div class="price">₱850</div></div>
+          <div class="price-row"><div><div class="name">Group</div><div class="desc">Min. 2 · per person</div></div><div class="dots"></div><div class="price">₱750</div></div>
+          <div class="price-row"><div><div class="name">Studio rental</div><div class="desc">Per hour</div></div><div class="dots"></div><div class="price">₱1,000</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="classes" class="schedule">
+    <div class="container">
+      <div class="center">
+        <p class="section-label">Classes &amp; schedule</p>
+        <h2 class="section-title">Find your class</h2>
+      </div>
+      <p class="schedule-note">Filter by level — each day lists pilates and yoga together. Intermediate and Expert open with both pilates styles.</p>
+
+      <div class="class-picks" role="tablist" aria-label="Filter by level">
+        <button type="button" class="class-pick is-active" data-scope="all">All</button>
+        <button type="button" class="class-pick" data-scope="beginner">Beginner</button>
+        <button type="button" class="class-pick" data-scope="intermediate">Intermediate</button>
+        <button type="button" class="class-pick" data-scope="expert">Expert</button>
+      </div>
+
+      <div class="schedule-board" id="schedule" style="scroll-margin-top: 5.25rem;">
+        <div class="class-chips is-solo" role="tablist" aria-label="Pilates classes">
+          <button type="button" class="class-chip is-hidden" data-class="flow-align" data-level="beginner" aria-hidden="true" tabindex="-1">Flow &amp; Align</button>
+          <button type="button" class="class-chip is-hidden" data-class="tone-sculpt" data-level="intermediate" aria-hidden="true" tabindex="-1">Tone &amp; Sculpt</button>
+          <button type="button" class="class-chip is-hidden" data-class="strengthen-stretch" data-level="intermediate" aria-hidden="true" tabindex="-1">Strengthen &amp; Stretch</button>
+          <button type="button" class="class-chip is-hidden" data-class="power-core" data-level="expert" aria-hidden="true" tabindex="-1">Power Core</button>
+          <button type="button" class="class-chip is-hidden" data-class="dynamic-flow" data-level="expert" aria-hidden="true" tabindex="-1">Dynamic Flow</button>
+        </div>
+        <div class="class-body is-idle">
+        <article class="class-panel" data-class="flow-align" aria-hidden="true">
+          <span class="level-pill">Beginner · Gentle</span>
+          <h3>Flow &amp; Align</h3>
+          <p>A mindful, low-impact class designed to reconnect you with your body. Expect slow, controlled movements that improve posture, build core awareness, and leave you feeling grounded and aligned. Perfect for beginners or anyone looking for a restorative flow.</p>
+        </article>
+        <article class="class-panel" data-class="tone-sculpt" aria-hidden="true">
+          <span class="level-pill">Intermediate</span>
+          <h3>Tone &amp; Sculpt</h3>
+          <p>A dynamic mat pilates class designed to build strength, define your muscles, and improve endurance. Expect a mix of controlled movements and challenging sequences that target your core, glutes, and overall body tone — leaving you stronger, sculpted, and energized after every session.</p>
+        </article>
+        <article class="class-panel" data-class="strengthen-stretch" aria-hidden="true">
+          <span class="level-pill">Intermediate</span>
+          <h3>Strengthen &amp; Stretch</h3>
+          <p>A balanced flow that works both strength and flexibility. You’ll engage your core and challenge your muscles while also opening up tight areas like hips, hamstrings, and shoulders. Expect to walk out taller, looser, and stronger.</p>
+        </article>
+        <article class="class-panel" data-class="power-core" aria-hidden="true">
+          <span class="level-pill">Expert · High energy</span>
+          <h3>Power Core</h3>
+          <p>Designed for those ready to push their limits, this class combines intense core drills, stability work, and flowing transitions. It builds stamina, carves definition, and leaves you sweating — a full-body challenge with pilates precision.</p>
+        </article>
+        <article class="class-panel" data-class="dynamic-flow" aria-hidden="true">
+          <span class="level-pill">Expert · High energy</span>
+          <h3>Dynamic Flow</h3>
+          <p>An upbeat, fast-paced sequence where one movement flows into the next. You’ll work your entire body through dynamic transitions that improve strength, control, and endurance. Ideal for clients who love a challenge and want to leave feeling powerful and energized.</p>
+        </article>
+        </div>
+        <div class="day-tabs" role="tablist" aria-label="Days of the week">
+          <button type="button" class="day-tab" role="tab" id="tab-mon" data-day="mon" aria-controls="panel-mon" aria-selected="false"><span class="dow">Mon</span><span class="hours-mini">10–6</span></button>
+          <button type="button" class="day-tab" role="tab" id="tab-tue" data-day="tue" aria-controls="panel-tue" aria-selected="false"><span class="dow">Tue</span><span class="hours-mini">7:30–6</span></button>
+          <button type="button" class="day-tab" role="tab" id="tab-wed" data-day="wed" aria-controls="panel-wed" aria-selected="false"><span class="dow">Wed</span><span class="hours-mini">9–5</span></button>
+          <button type="button" class="day-tab" role="tab" id="tab-thu" data-day="thu" aria-controls="panel-thu" aria-selected="false"><span class="dow">Thu</span><span class="hours-mini">7:30–6</span></button>
+          <button type="button" class="day-tab" role="tab" id="tab-fri" data-day="fri" aria-controls="panel-fri" aria-selected="false"><span class="dow">Fri</span><span class="hours-mini">7:30–7</span></button>
+          <button type="button" class="day-tab" role="tab" id="tab-sat" data-day="sat" aria-controls="panel-sat" aria-selected="false"><span class="dow">Sat</span><span class="hours-mini">9–7</span></button>
+          <button type="button" class="day-tab" role="tab" id="tab-sun" data-day="sun" aria-controls="panel-sun" aria-selected="false"><span class="dow">Sun</span><span class="hours-mini">9–7</span></button>
+        </div>
+
+        <div class="filter-row">
+          <div class="panel-heading" id="panel-day-label">Pilates &amp; Yoga</div>
+          <div class="panel-hours" id="panel-hours-label">10:00 AM – 6:00 PM</div>
+        </div>
+
+        <div class="day-panel" id="panel-mon" role="tabpanel" data-day="mon" data-label="Monday" data-hours="10:00 AM – 6:00 PM" aria-labelledby="tab-mon">
+          <div class="class-row" data-type="yoga" data-level="intermediate"><span class="class-time">10:00 AM</span><span class="class-name">Vinyasa</span><span class="class-kind">Yoga</span></div>
+          <div class="class-row" data-type="pilates" data-class="power-core" data-level="expert"><span class="class-time">11:00 AM</span><span class="class-name">Power Core</span><span class="class-kind">Pilates</span></div>
+          <div class="class-row" data-type="pilates" data-class="tone-sculpt" data-level="intermediate"><span class="class-time">1:00 PM</span><span class="class-name">Tone &amp; Sculpt</span><span class="class-kind">Pilates</span></div>
+          <div class="class-row" data-type="pilates" data-class="strengthen-stretch" data-level="intermediate"><span class="class-time">2:00 PM</span><span class="class-name">Strengthen &amp; Stretch</span><span class="class-kind">Pilates</span></div>
+          <div class="class-row" data-type="yoga" data-level="expert"><span class="class-time">3:00 PM</span><span class="class-name">Power Flow</span><span class="class-kind">Yoga</span></div>
+          <div class="class-row" data-type="pilates" data-class="flow-align" data-level="beginner"><span class="class-time">5:00 PM</span><span class="class-name">Flow &amp; Align</span><span class="class-kind">Pilates</span></div>
+          <div class="class-row" data-type="pilates" data-class="tone-sculpt" data-level="intermediate"><span class="class-time">6:00 PM</span><span class="class-name">Tone &amp; Sculpt</span><span class="class-kind">Pilates</span></div>
+        </div>
+        <div class="day-panel" id="panel-tue" role="tabpanel" data-day="tue" data-label="Tuesday" data-hours="7:30 AM – 6:00 PM" aria-labelledby="tab-tue">
+          <div class="class-row" data-type="yoga" data-level="beginner"><span class="class-time">7:30 AM</span><span class="class-name">Beginners Yoga</span><span class="class-kind">Yoga</span></div>
+          <div class="class-row" data-type="pilates" data-class="flow-align" data-level="beginner"><span class="class-time">11:00 AM</span><span class="class-name">Flow &amp; Align</span><span class="class-kind">Pilates</span></div>
+          <div class="class-row" data-type="pilates" data-class="power-core" data-level="expert"><span class="class-time">1:00 PM</span><span class="class-name">Power Core</span><span class="class-kind">Pilates</span></div>
+          <div class="class-row" data-type="pilates" data-class="flow-align" data-level="beginner"><span class="class-time">2:00 PM</span><span class="class-name">Flow &amp; Align</span><span class="class-kind">Pilates</span></div>
+          <div class="class-row" data-type="pilates" data-class="tone-sculpt" data-level="intermediate"><span class="class-time">5:00 PM</span><span class="class-name">Tone &amp; Sculpt</span><span class="class-kind">Pilates</span></div>
+          <div class="class-row" data-type="pilates" data-class="dynamic-flow" data-level="expert"><span class="class-time">6:00 PM</span><span class="class-name">Dynamic Flow</span><span class="class-kind">Pilates</span></div>
+        </div>
+        <div class="day-panel" id="panel-wed" role="tabpanel" data-day="wed" data-label="Wednesday" data-hours="9:00 AM – 5:00 PM" aria-labelledby="tab-wed">
+          <div class="class-row" data-type="pilates" data-class="flow-align" data-level="beginner"><span class="class-time">9:00 AM</span><span class="class-name">Flow &amp; Align</span><span class="class-kind">Pilates</span></div>
+          <div class="class-row" data-type="pilates" data-class="tone-sculpt" data-level="intermediate"><span class="class-time">10:00 AM</span><span class="class-name">Tone &amp; Sculpt</span><span class="class-kind">Pilates</span></div>
+          <div class="class-row" data-type="pilates" data-class="strengthen-stretch" data-level="intermediate"><span class="class-time">1:00 PM</span><span class="class-name">Strengthen &amp; Stretch</span><span class="class-kind">Pilates</span></div>
+          <div class="class-row" data-type="yoga" data-level="intermediate"><span class="class-time">2:00 PM</span><span class="class-name">Vinyasa</span><span class="class-kind">Yoga</span></div>
+          <div class="class-row" data-type="pilates" data-class="tone-sculpt" data-level="intermediate"><span class="class-time">3:00 PM</span><span class="class-name">Tone &amp; Sculpt</span><span class="class-kind">Pilates</span></div>
+          <div class="class-row" data-type="pilates" data-class="flow-align" data-level="beginner"><span class="class-time">4:00 PM</span><span class="class-name">Flow &amp; Align</span><span class="class-kind">Pilates</span></div>
+          <div class="class-row" data-type="pilates" data-class="dynamic-flow" data-level="expert"><span class="class-time">5:00 PM</span><span class="class-name">Dynamic Flow</span><span class="class-kind">Pilates</span></div>
+        </div>
+        <div class="day-panel" id="panel-thu" role="tabpanel" data-day="thu" data-label="Thursday" data-hours="7:30 AM – 6:00 PM" aria-labelledby="tab-thu">
+          <div class="class-row" data-type="yoga" data-level="all-levels"><span class="class-time">7:30 AM</span><span class="class-name">Vinyasa for All Levels</span><span class="class-kind">Yoga</span></div>
+          <div class="class-row" data-type="pilates" data-class="tone-sculpt" data-level="intermediate"><span class="class-time">10:00 AM</span><span class="class-name">Tone &amp; Sculpt</span><span class="class-kind">Pilates</span></div>
+          <div class="class-row" data-type="yoga" data-level="intermediate"><span class="class-time">11:00 AM</span><span class="class-name">Vinyasa</span><span class="class-kind">Yoga</span></div>
+          <div class="class-row" data-type="pilates" data-class="power-core" data-level="expert"><span class="class-time">2:00 PM</span><span class="class-name">Power Core</span><span class="class-kind">Pilates</span></div>
+          <div class="class-row" data-type="pilates" data-class="flow-align" data-level="beginner"><span class="class-time">4:00 PM</span><span class="class-name">Flow &amp; Align</span><span class="class-kind">Pilates</span></div>
+          <div class="class-row" data-type="pilates" data-class="dynamic-flow" data-level="expert"><span class="class-time">5:00 PM</span><span class="class-name">Dynamic Flow</span><span class="class-kind">Pilates</span></div>
+        </div>
+        <div class="day-panel" id="panel-fri" role="tabpanel" data-day="fri" data-label="Friday" data-hours="7:30 AM – 7:00 PM" aria-labelledby="tab-fri">
+          <div class="class-row" data-type="yoga" data-level="expert"><span class="class-time">7:30 AM</span><span class="class-name">Power Yoga</span><span class="class-kind">Yoga</span></div>
+          <div class="class-row" data-type="yoga" data-level="intermediate"><span class="class-time">10:00 AM</span><span class="class-name">Vinyasa</span><span class="class-kind">Yoga</span></div>
+          <div class="class-row" data-type="pilates" data-class="flow-align" data-level="beginner"><span class="class-time">11:00 AM</span><span class="class-name">Flow &amp; Align</span><span class="class-kind">Pilates</span></div>
+          <div class="class-row" data-type="yoga" data-level="expert"><span class="class-time">1:00 PM</span><span class="class-name">Power Flow</span><span class="class-kind">Yoga</span></div>
+          <div class="class-row" data-type="pilates" data-class="tone-sculpt" data-level="intermediate"><span class="class-time">2:00 PM</span><span class="class-name">Tone &amp; Sculpt</span><span class="class-kind">Pilates</span></div>
+          <div class="class-row" data-type="pilates" data-class="power-core" data-level="expert"><span class="class-time">4:00 PM</span><span class="class-name">Power Core</span><span class="class-kind">Pilates</span></div>
+          <div class="class-row" data-type="pilates" data-class="dynamic-flow" data-level="expert"><span class="class-time">5:00 PM</span><span class="class-name">Dynamic Flow</span><span class="class-kind">Pilates</span></div>
+          <div class="class-row" data-type="pilates" data-class="strengthen-stretch" data-level="intermediate"><span class="class-time">7:00 PM</span><span class="class-name">Strengthen &amp; Stretch</span><span class="class-kind">Pilates</span></div>
+        </div>
+        <div class="day-panel" id="panel-sat" role="tabpanel" data-day="sat" data-label="Saturday" data-hours="9:00 AM – 7:00 PM" aria-labelledby="tab-sat">
+          <div class="class-row" data-type="pilates" data-class="flow-align" data-level="beginner"><span class="class-time">9:00 AM</span><span class="class-name">Flow &amp; Align</span><span class="class-kind">Pilates</span></div>
+          <div class="class-row" data-type="pilates" data-class="tone-sculpt" data-level="intermediate"><span class="class-time">11:00 AM</span><span class="class-name">Tone &amp; Sculpt</span><span class="class-kind">Pilates</span></div>
+          <div class="class-row" data-type="pilates" data-class="tone-sculpt" data-level="intermediate"><span class="class-time">2:00 PM</span><span class="class-name">Tone &amp; Sculpt</span><span class="class-kind">Pilates</span></div>
+          <div class="class-row" data-type="pilates" data-class="power-core" data-level="expert"><span class="class-time">3:00 PM</span><span class="class-name">Power Core</span><span class="class-kind">Pilates</span></div>
+          <div class="class-row" data-type="pilates" data-class="dynamic-flow" data-level="expert"><span class="class-time">4:00 PM</span><span class="class-name">Dynamic Flow</span><span class="class-kind">Pilates</span></div>
+          <div class="class-row" data-type="pilates" data-class="strengthen-stretch" data-level="intermediate"><span class="class-time">5:00 PM</span><span class="class-name">Strengthen &amp; Stretch</span><span class="class-kind">Pilates</span></div>
+          <div class="class-row" data-type="pilates" data-class="flow-align" data-level="beginner"><span class="class-time">7:00 PM</span><span class="class-name">Flow &amp; Align</span><span class="class-kind">Pilates</span></div>
+        </div>
+        <div class="day-panel" id="panel-sun" role="tabpanel" data-day="sun" data-label="Sunday" data-hours="9:00 AM – 7:00 PM" aria-labelledby="tab-sun">
+          <div class="class-row" data-type="pilates" data-class="flow-align" data-level="beginner"><span class="class-time">9:00 AM</span><span class="class-name">Flow &amp; Align</span><span class="class-kind">Pilates</span></div>
+          <div class="class-row" data-type="pilates" data-class="tone-sculpt" data-level="intermediate"><span class="class-time">11:00 AM</span><span class="class-name">Tone &amp; Sculpt</span><span class="class-kind">Pilates</span></div>
+          <div class="class-row" data-type="pilates" data-class="tone-sculpt" data-level="intermediate"><span class="class-time">2:00 PM</span><span class="class-name">Tone &amp; Sculpt</span><span class="class-kind">Pilates</span></div>
+          <div class="class-row" data-type="pilates" data-class="power-core" data-level="expert"><span class="class-time">3:00 PM</span><span class="class-name">Power Core</span><span class="class-kind">Pilates</span></div>
+          <div class="class-row" data-type="pilates" data-class="dynamic-flow" data-level="expert"><span class="class-time">4:00 PM</span><span class="class-name">Dynamic Flow</span><span class="class-kind">Pilates</span></div>
+          <div class="class-row" data-type="pilates" data-class="strengthen-stretch" data-level="intermediate"><span class="class-time">5:00 PM</span><span class="class-name">Strengthen &amp; Stretch</span><span class="class-kind">Pilates</span></div>
+          <div class="class-row" data-type="pilates" data-class="flow-align" data-level="beginner"><span class="class-time">7:00 PM</span><span class="class-name">Flow &amp; Align</span><span class="class-kind">Pilates</span></div>
+        </div>
+        <p class="empty-day" id="schedule-empty">Nothing matches this day — try another day, or All.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery" class="gallery">
+    <div class="container">
+      <div class="center">
+        <p class="section-label">The space</p>
+        <h2 class="section-title">Inside the studio</h2>
+      </div>
+      <p class="section-sub">A calm room for class, private sessions, and hourly rental — light, mats, and room to move.</p>
+      <div class="gallery-grid">
+        <div class="gallery-item"><img src="images/hero.jpg" alt="Ora Studio — practice space with mats and lounge"></div>
+        <div class="gallery-item"><img src="images/gallery-1.jpg" alt="Mat pilates setup ready for class"></div>
+        <div class="gallery-item"><img src="images/gallery-2.jpg" alt="Community after class at Ora Studio"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="book" class="booking">
+    <div class="container">
+      <p class="section-label">Appointments</p>
+      <h2 class="section-title">Book your visit</h2>
+      <p>Reach out on Instagram to reserve a drop-in, private session, or studio rental. We reply as soon as we can.</p>
+      <a href="https://www.instagram.com/orastudio.cebu" class="btn" target="_blank" rel="noopener">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
+        Message in Instagram
+      </a>
+      <p class="booking-email">Or email <a href="mailto:orastudiocebu@gmail.com">orastudiocebu@gmail.com</a></p>
+      <div class="booking-grid">
+        <div class="visit-block">
+          <p class="booking-kicker">Find us</p>
+          <p class="visit-address">Level 3 Chatswood Drive, A.S. Fortuna St., Mandaue City</p>
+          <div class="visit-map">
+            <iframe
+              title="Ora Studio on Google Maps"
+              src="https://maps.google.com/maps?q=Ora+Studio+Chatswood+Drive+A.S.+Fortuna+Mandaue+City&z=17&output=embed"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              tabindex="-1"
+              aria-hidden="true"></iframe>
+            <a class="visit-map-hit" href="https://maps.app.goo.gl/cuznQzeQVJGA7mp18" target="_blank" rel="noopener" aria-label="Open Ora Studio in Google Maps"></a>
+            <span class="visit-map-cta">Open in Maps</span>
+          </div>
+        </div>
+        <div class="hours-block">
+          <div class="hours-head">
+            <p class="booking-kicker">Studio hours</p>
+            <span class="hours-head-dot" aria-hidden="true">·</span>
+            <span class="hours-today-label">Open today</span>
+          </div>
+          <span class="hours-today-when" id="hours-today-when">10:00 AM – 6:00 PM</span>
+          <ul class="hours-list">
+            <li data-day="mon"><span class="dow">Mon</span><span class="when">10:00 AM – 6:00 PM</span></li>
+            <li data-day="tue"><span class="dow">Tue</span><span class="when">7:30 AM – 6:00 PM</span></li>
+            <li data-day="wed"><span class="dow">Wed</span><span class="when">9:00 AM – 5:00 PM</span></li>
+            <li data-day="thu"><span class="dow">Thu</span><span class="when">7:30 AM – 6:00 PM</span></li>
+            <li data-day="fri"><span class="dow">Fri</span><span class="when">7:30 AM – 7:00 PM</span></li>
+            <li data-day="sat"><span class="dow">Sat</span><span class="when">9:00 AM – 7:00 PM</span></li>
+            <li data-day="sun"><span class="dow">Sun</span><span class="when">9:00 AM – 7:00 PM</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <a href="#" class="brand-mark" aria-label="Ora Studio">
+        <span class="brand-ora" aria-hidden="true">ORA</span>
+        <span class="brand-studio" aria-hidden="true"><span>S</span><span>T</span><span>U</span><span>D</span><span>I</span><span>O</span></span>
+      </a>
+      <div class="socials">
+        <a href="https://www.instagram.com/orastudio.cebu" aria-label="Instagram" target="_blank" rel="noopener"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg></a>
+        <a href="https://www.facebook.com/profile.php?id=61575307350910" aria-label="Facebook" target="_blank" rel="noopener"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+        <a href="mailto:orastudiocebu@gmail.com" aria-label="Email"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="m4 7 8 6 8-6"/></svg></a>
+      </div>
+      <div class="footer-bottom">
+        &copy; <span id="year"></span> Ora Studio · Mandaue City
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function setMenuOpen(open) {
+      var links = document.querySelector('.nav-links');
+      var btn = document.querySelector('.menu-toggle');
+      var backdrop = document.getElementById('nav-backdrop');
+      links.classList.toggle('open', open);
+      document.body.classList.toggle('menu-open', open);
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      if (backdrop) backdrop.setAttribute('aria-hidden', open ? 'false' : 'true');
+      updateHeader();
+    }
+
+    function toggleMenu() {
+      setMenuOpen(!document.querySelector('.nav-links').classList.contains('open'));
+    }
+
+    function updateHeader() {
+      var header = document.querySelector('header');
+      var hero = document.querySelector('.hero');
+      var menuOpen = document.querySelector('.nav-links').classList.contains('open');
+      var pastHero = hero.getBoundingClientRect().bottom <= header.offsetHeight + 8;
+      header.classList.toggle('is-solid', pastHero || menuOpen);
+    }
+
+    function updateNavHere() {
+      var header = document.querySelector('header');
+      var offset = (header ? header.offsetHeight : 80) + 28;
+      var sectionIds = ['about', 'classes', 'services', 'schedule', 'gallery', 'book'];
+      var current = null;
+      sectionIds.forEach(function (id) {
+        var el = document.getElementById(id);
+        if (!el) return;
+        if (el.getBoundingClientRect().top <= offset) current = id;
+      });
+      document.querySelectorAll('.nav-links a[href^="#"]').forEach(function (link) {
+        var href = link.getAttribute('href');
+        var on = current && href === '#' + current;
+        link.classList.toggle('is-here', !!on);
+        if (on) link.setAttribute('aria-current', 'location');
+        else link.removeAttribute('aria-current');
+      });
+    }
+
+    /* Match STUDIO letterspan to ORA ink width (space-between stretch can fail under max-content) */
+    (function () {
+      function syncBrandWidths() {
+        document.querySelectorAll('.brand-mark').forEach(function (mark) {
+          var ora = mark.querySelector('.brand-ora');
+          var studio = mark.querySelector('.brand-studio');
+          if (!ora || !studio) return;
+          studio.style.width = '';
+          var target = Math.ceil(ora.getBoundingClientRect().width);
+          if (target > 0) studio.style.width = target + 'px';
+        });
+      }
+      function run() {
+        syncBrandWidths();
+        requestAnimationFrame(syncBrandWidths);
+      }
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(run);
+      else run();
+      window.addEventListener('resize', syncBrandWidths);
+    })();
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.querySelectorAll('.nav-links a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        setMenuOpen(false);
+      });
+    });
+    var backdrop = document.getElementById('nav-backdrop');
+    if (backdrop) {
+      backdrop.addEventListener('click', function () { setMenuOpen(false); });
+    }
+    window.addEventListener('scroll', function () {
+      updateHeader();
+      updateNavHere();
+    }, { passive: true });
+    window.addEventListener('resize', function () {
+      updateHeader();
+      updateNavHere();
+      if (window.innerWidth > 860) setMenuOpen(false);
+    });
+    if ('IntersectionObserver' in window) {
+      var headerWatcher = new IntersectionObserver(function () { updateHeader(); }, {
+        rootMargin: '-80px 0px 0px 0px', threshold: [0, 0.01, 1]
+      });
+      headerWatcher.observe(document.querySelector('.hero'));
+    }
+    updateHeader();
+    updateNavHere();
+
+    (function () {
+      var dayKeys = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
+      var tabs = document.querySelectorAll('.day-tab');
+      var panels = document.querySelectorAll('.day-panel');
+      var picks = document.querySelectorAll('.class-pick[data-scope]');
+      var chips = document.querySelectorAll('.class-chip');
+      var chipRow = document.querySelector('.class-chips');
+      var classPanels = document.querySelectorAll('.class-panel');
+      var classBody = document.querySelector('.class-body');
+      var label = document.getElementById('panel-day-label');
+      var hours = document.getElementById('panel-hours-label');
+      var empty = document.getElementById('schedule-empty');
+      var activeDay = dayKeys[new Date().getDay()];
+      var activeScope = 'all';
+      var activeClass = null;
+
+      function applyFilter() {
+        var panel = document.querySelector('.day-panel.is-active');
+        if (!panel) return;
+        var rows = panel.querySelectorAll('.class-row');
+        var visible = 0;
+        rows.forEach(function (row) {
+          var type = row.getAttribute('data-type');
+          var level = row.getAttribute('data-level');
+          var cls = row.getAttribute('data-class');
+          var match;
+          if (activeScope === 'all') {
+            match = true;
+          } else {
+            var atLevel = level === activeScope || level === 'all-levels';
+            if (!atLevel) match = false;
+            else if (type === 'yoga') match = true;
+            else if (activeClass) match = cls === activeClass;
+            else match = type === 'pilates';
+          }
+          row.classList.toggle('is-hidden', !match);
+          if (match) visible += 1;
+        });
+        empty.classList.toggle('is-visible', visible === 0);
+      }
+
+      function visibleChipCount() {
+        var n = 0;
+        chips.forEach(function (chip) {
+          if (!chip.classList.contains('is-hidden')) n += 1;
+        });
+        return n;
+      }
+
+      function syncPanelHeading() {
+        var panel = document.querySelector('.day-panel.is-active');
+        if (!panel || !label || !hours) return;
+        hours.textContent = panel.getAttribute('data-hours') || '';
+        if (activeClass && visibleChipCount() >= 2) {
+          label.textContent = 'Pilates';
+        } else {
+          label.textContent = 'Pilates & Yoga';
+        }
+      }
+
+      function syncLevelChrome(picked) {
+        var visible = visibleChipCount();
+        var pair = visible >= 2;
+        if (chipRow) {
+          chipRow.classList.toggle('is-solo', activeScope === 'all' || !pair);
+          chipRow.classList.toggle('is-pair', pair);
+          chipRow.classList.toggle('has-pick', pair && !!picked);
+        }
+        chips.forEach(function (chip) {
+          var on = chip.classList.contains('is-active');
+          chip.setAttribute('aria-pressed', on ? 'true' : 'false');
+          if (!chip.classList.contains('is-hidden')) {
+            chip.setAttribute(
+              'aria-label',
+              on
+                ? chip.textContent.trim() + ', selected — activate again to show both'
+                : chip.textContent.trim() + ', show this pilates class'
+            );
+          }
+        });
+        syncPanelHeading();
+      }
+
+      function hideBlurb() {
+        if (classBody) classBody.classList.add('is-idle');
+        classPanels.forEach(function (panel) {
+          panel.classList.remove('is-active');
+          panel.setAttribute('aria-hidden', 'true');
+        });
+        chips.forEach(function (chip) { chip.classList.remove('is-active'); });
+        activeClass = null;
+        syncLevelChrome(null);
+      }
+
+      function showClass(slug) {
+        activeClass = slug;
+        chips.forEach(function (chip) {
+          chip.classList.toggle('is-active', chip.getAttribute('data-class') === slug);
+        });
+        classPanels.forEach(function (panel) {
+          var on = panel.getAttribute('data-class') === slug;
+          panel.classList.toggle('is-active', on);
+          panel.setAttribute('aria-hidden', on ? 'false' : 'true');
+        });
+        if (classBody) classBody.classList.remove('is-idle');
+        applyFilter();
+        syncLevelChrome(slug);
+      }
+
+      function showScope(scope) {
+        activeScope = scope;
+        activeClass = null;
+        picks.forEach(function (pick) {
+          pick.classList.toggle('is-active', pick.getAttribute('data-scope') === scope);
+        });
+        if (scope === 'all') {
+          if (chipRow) chipRow.classList.add('is-solo');
+          chips.forEach(function (chip) {
+            chip.classList.add('is-hidden');
+            chip.setAttribute('aria-hidden', 'true');
+            chip.tabIndex = -1;
+          });
+          hideBlurb();
+          applyFilter();
+          syncPanelHeading();
+          return;
+        }
+        var first = null;
+        var visible = 0;
+        chips.forEach(function (chip) {
+          var match = chip.getAttribute('data-level') === scope;
+          chip.classList.toggle('is-hidden', !match);
+          chip.setAttribute('aria-hidden', match ? 'false' : 'true');
+          chip.tabIndex = match ? 0 : -1;
+          chip.classList.remove('is-active');
+          if (match) {
+            visible += 1;
+            if (!first) first = chip.getAttribute('data-class');
+          }
+        });
+        if (chipRow) chipRow.classList.toggle('is-solo', visible < 2);
+        if (visible < 2 && first) showClass(first);
+        else {
+          hideBlurb();
+          applyFilter();
+          syncLevelChrome(null);
+        }
+      }
+
+      function showDay(day) {
+        activeDay = day;
+        tabs.forEach(function (tab) {
+          var on = tab.getAttribute('data-day') === day;
+          tab.classList.toggle('is-active', on);
+          tab.setAttribute('aria-selected', on ? 'true' : 'false');
+        });
+        panels.forEach(function (panel) {
+          panel.classList.toggle('is-active', panel.getAttribute('data-day') === day);
+        });
+        applyFilter();
+        syncPanelHeading();
+      }
+
+      tabs.forEach(function (tab) {
+        if (tab.getAttribute('data-day') === activeDay) tab.classList.add('is-today');
+        tab.addEventListener('click', function () {
+          showDay(tab.getAttribute('data-day'));
+        });
+      });
+      picks.forEach(function (pick) {
+        pick.addEventListener('click', function () {
+          showScope(pick.getAttribute('data-scope'));
+        });
+      });
+      chips.forEach(function (chip) {
+        chip.addEventListener('click', function () {
+          var slug = chip.getAttribute('data-class');
+          if (chip.classList.contains('is-active')) {
+            showScope(chip.getAttribute('data-level'));
+            return;
+          }
+          showClass(slug);
+        });
+      });
+      document.querySelectorAll('.class-row[data-class]').forEach(function (row) {
+        row.addEventListener('click', function () {
+          var slug = row.getAttribute('data-class');
+          var level = row.getAttribute('data-level');
+          if (!slug || !level) return;
+          activeScope = level;
+          picks.forEach(function (pick) {
+            pick.classList.toggle('is-active', pick.getAttribute('data-scope') === level);
+          });
+          var visible = 0;
+          chips.forEach(function (chip) {
+            var match = chip.getAttribute('data-level') === level;
+            chip.classList.toggle('is-hidden', !match);
+            chip.setAttribute('aria-hidden', match ? 'false' : 'true');
+            chip.tabIndex = match ? 0 : -1;
+            if (match) visible += 1;
+          });
+          if (chipRow) chipRow.classList.toggle('is-solo', visible < 2);
+          showClass(slug);
+        });
+      });
+      showScope('all');
+      showDay(activeDay);
+      document.querySelectorAll('.hours-list [data-day]').forEach(function (row) {
+        var on = row.getAttribute('data-day') === activeDay;
+        row.classList.toggle('is-today', on);
+        if (on) {
+          var todayWhen = document.getElementById('hours-today-when');
+          var when = row.querySelector('.when');
+          if (todayWhen && when) todayWhen.textContent = when.textContent;
+        }
+      });
+    })();
+
+    (function () {
+      var picks = document.querySelectorAll('.rate-picks .class-pick');
+      var groups = document.querySelectorAll('.service-group[data-rate]');
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      function showRate(rate) {
+        picks.forEach(function (pick) {
+          pick.classList.toggle('is-active', pick.getAttribute('data-rate') === rate);
+        });
+        groups.forEach(function (group) {
+          var on = rate === 'all' || group.getAttribute('data-rate') === rate;
+          group.classList.toggle('is-hidden', !on);
+          group.classList.toggle('is-shown', on && !reduce);
+        });
+      }
+      picks.forEach(function (pick) {
+        pick.addEventListener('click', function () {
+          showRate(pick.getAttribute('data-rate'));
+        });
+      });
+      showRate('all');
+    })();
+
+    (function () {
+      var targets = document.querySelectorAll('.service-group, .gallery-item, .intro-copy, .intro-photo, .schedule-board, .visit-block, .hours-block, .section-title');
+      targets.forEach(function (el) { el.classList.add('reveal'); });
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        targets.forEach(function (el) { el.classList.add('in'); });
+        return;
+      }
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry, i) {
+          if (entry.isIntersecting) {
+            entry.target.style.transitionDelay = (i % 4) * 70 + 'ms';
+            entry.target.classList.add('in');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      targets.forEach(function (el) { io.observe(el); });
+    })();
+  </script>
+</body>
+</html>
