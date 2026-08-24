@@ -119,30 +119,41 @@
     .brand-studio > span { display: block; flex: 0 0 auto; line-height: 1; }
     .nav-links { display: flex; gap: 1.75rem; list-style: none; align-items: center; }
     .nav-links a {
+      position: relative;
       text-decoration: none; color: inherit; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.1em;
-      box-shadow: inset 0 -2px 0 transparent;
-      transition: color 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      transition: color 0.2s ease, opacity 0.2s ease, background 0.2s ease, border-color 0.2s ease;
     }
     header.is-solid .nav-links a:hover { color: var(--color-primary); }
     header:not(.is-solid) .nav-links a:hover { opacity: 0.78; }
-    header.is-solid .nav-links a.is-here {
-      color: var(--color-primary);
-      box-shadow: inset 0 -2px 0 var(--color-primary);
-    }
-    header:not(.is-solid) .nav-links a.is-here {
-      opacity: 1;
-      box-shadow: inset 0 -2px 0 rgba(255, 250, 245, 0.95);
-    }
     .nav-cta { border: 1px solid currentColor; padding: 0.45rem 1.15rem; border-radius: var(--radius); }
     header.is-solid .nav-cta { border-color: var(--color-primary); color: var(--color-primary) !important; }
     header.is-solid .nav-cta:hover { background: var(--color-primary); color: #fff !important; }
-    header.is-solid .nav-cta.is-here {
-      background: var(--color-primary); color: #fff !important; border-color: var(--color-primary);
-      box-shadow: none;
-    }
     header:not(.is-solid) .nav-cta:hover { background: rgba(255,250,245,0.12); opacity: 1; }
-    header:not(.is-solid) .nav-cta.is-here {
-      background: rgba(255,250,245,0.14); box-shadow: none;
+    @media (min-width: 861px) {
+      @keyframes navDiamondIn {
+        from { opacity: 0; transform: translateX(-50%) rotate(45deg) scale(0.35); }
+        to { opacity: 1; transform: translateX(-50%) rotate(45deg) scale(1); }
+      }
+      .nav-links a.is-here::before {
+        content: '';
+        position: absolute; left: 50%; top: calc(100% + 0.5rem);
+        width: 0.34rem; height: 0.34rem;
+        background: currentColor;
+        transform: translateX(-50%) rotate(45deg);
+        animation: navDiamondIn 0.34s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+      .nav-links a.nav-cta.is-here::before { content: none; display: none; }
+      header.is-solid .nav-links a.is-here { color: var(--color-primary); }
+      header:not(.is-solid) .nav-links a.is-here { opacity: 1; }
+      header.is-solid .nav-cta.is-here {
+        background: var(--color-primary); color: #fff !important; border-color: var(--color-primary);
+      }
+      header:not(.is-solid) .nav-cta.is-here {
+        background: rgba(255, 250, 245, 0.18);
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .nav-links a.is-here::before { animation: none; }
     }
     .menu-toggle {
       display: none; background: none; border: none; cursor: pointer;
@@ -513,7 +524,6 @@
       }
       .nav-links a.is-here {
         color: var(--color-primary);
-        box-shadow: none;
       }
       .nav-links a.is-here::after {
         content: 'You are here';
@@ -884,26 +894,63 @@
       header.classList.toggle('is-solid', pastHero || menuOpen);
     }
 
-    function updateNavHere() {
+    var pinnedNavId = null;
+    var pinClearTimer = null;
+
+    function applyNavHere(current) {
+      document.querySelectorAll('.nav-links a[href^="#"]').forEach(function (link) {
+        var id = (link.getAttribute('href') || '').slice(1);
+        var on = !!current && id === current;
+        link.classList.toggle('is-here', on);
+        if (on) link.setAttribute('aria-current', 'location');
+        else link.removeAttribute('aria-current');
+      });
+    }
+
+    function scrollNavCurrent() {
       var header = document.querySelector('header');
       var offset = (header ? header.offsetHeight : 80) + 28;
       var markers = [];
       document.querySelectorAll('.nav-links a[href^="#"]').forEach(function (link) {
         var id = (link.getAttribute('href') || '').slice(1);
         var el = id ? document.getElementById(id) : null;
-        if (el) markers.push({ id: id, el: el, link: link });
+        if (el) markers.push({ id: id, el: el });
       });
       markers.sort(function (a, b) { return a.el.offsetTop - b.el.offsetTop; });
       var current = null;
       markers.forEach(function (m) {
         if (m.el.getBoundingClientRect().top <= offset) current = m.id;
       });
-      markers.forEach(function (m) {
-        var on = current === m.id;
-        m.link.classList.toggle('is-here', on);
-        if (on) m.link.setAttribute('aria-current', 'location');
-        else m.link.removeAttribute('aria-current');
-      });
+      return current;
+    }
+
+    function updateNavHere() {
+      var current = scrollNavCurrent();
+      if (pinnedNavId) {
+        if (current === pinnedNavId) {
+          pinnedNavId = null;
+          if (pinClearTimer) {
+            clearTimeout(pinClearTimer);
+            pinClearTimer = null;
+          }
+        } else {
+          applyNavHere(pinnedNavId);
+          return;
+        }
+      }
+      applyNavHere(current);
+    }
+
+    function pinNavHere(id) {
+      if (!id) return;
+      pinnedNavId = id;
+      applyNavHere(id);
+      if (pinClearTimer) clearTimeout(pinClearTimer);
+      pinClearTimer = setTimeout(function () {
+        pinnedNavId = null;
+        pinClearTimer = null;
+        updateNavHere();
+      }, 1600);
     }
 
     /* Match STUDIO letterspan to ORA ink width (space-between stretch can fail under max-content) */
@@ -930,6 +977,8 @@
     document.getElementById('year').textContent = new Date().getFullYear();
     document.querySelectorAll('.nav-links a').forEach(function (link) {
       link.addEventListener('click', function () {
+        var href = link.getAttribute('href') || '';
+        if (href.charAt(0) === '#') pinNavHere(href.slice(1));
         setMenuOpen(false);
       });
     });
